@@ -1,25 +1,11 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
-
 #1. Import libraries and set up
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.ticker as mtick
 
-
-# In[3]:
-
-
 #2. Import data
 data = pd.read_csv("dataset.csv")
-
-
-# In[54]:
-
 
 #3. Clean and transform data
 countries = data["birth_country"].sort_values().unique()
@@ -37,10 +23,6 @@ proportions = country_winner.groupby(level=0, group_keys = False).apply(lambda x
 proportions = proportions.reset_index(name = "country_prop")
 proportions["country_prop"] = proportions["country_prop"] * 100
 proportions_pivot = proportions.pivot(index="decade", columns="birth_country", values="country_prop")
-
-
-# In[ ]:
-
 
 #4. Plot data using 100% stacked are chart
 fig, ax = plt.subplots(figsize = (12, 8))
